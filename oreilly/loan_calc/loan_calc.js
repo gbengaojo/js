@@ -1,10 +1,3 @@
-/*
- * This script defines the calculate() function called by the event handlers
- * in HTML above. The function reads values from <input> elements, calculates
- * loan payment information, displays the results in <span> elements. It also
- * saves the user's data, displays links to lenders, and draws a chart.
- */
-
 function calculate() {
    // Look up the input and output elements in the document
    var amount = document.getElementById("amount");
