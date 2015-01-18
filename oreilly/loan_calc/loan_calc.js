@@ -137,7 +137,7 @@ function chart(principal, interest, monthly, payments) {
    function amountToY(a) { return height-(a * height/(monthly*payments*1.05));}
 
    // Payments are a straight line from (0,0) to (payments, monthly*payments)
-   g.moveTo(paymentToX(0), amountToY(0);           // Start at lower left
+   g.moveTo(paymentToX(0), amountToY(0));           // Start at lower left
    g.lineTo(paymentToX(payments),                  // Draw to upper right
       amountToY(monthly*payments));
    g.lineTo(paymentToX(payments), amountToY(0));   // Down to lower right
@@ -149,7 +149,7 @@ function chart(principal, interest, monthly, payments) {
    // Cumulative equity isnon-linear and trickier to chart
    var equity = 0;
    g.beginPath() ;                                 // Begin a new shape
-   g.moveTo(paymentToX(0), amountToY(0);           // starting at lower left
+   g.moveTo(paymentToX(0), amountToY(0));           // starting at lower left
    for (var p = 1; p <= payments; p++) {
       // For each payment, figure out how much is interest
       var thisMonthsIntegers = (principal-equity) * interest;
@@ -195,7 +195,7 @@ function chart(principal, interest, monthly, payments) {
    for (var i = 0; i < ticks.length; i++) {        // For each of the two points
       var y = amountToY(ticks[i]);                 // Compute Y position of tick
       g.fillRect(rightEdge - 3, y - 0.5, 3, 1);    // Draw the tick mark
-      g.fillText(String(ticks[i].toFixed(0),       // And label it.
+      g.fillText(String(ticks[i].toFixed(0)),       // And label it.
          rightEdge - 5, y);
    }
 }
