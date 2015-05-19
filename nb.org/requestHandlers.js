@@ -23,7 +23,7 @@ function start(response) {
    response.end();
 }
 
-function upload(response, postData) {
+function upload(response, request) {
    console.log("Request handler 'upload' was called.");
 
    var form = new formidable.IncomingForm();
@@ -44,6 +44,7 @@ function upload(response, postData) {
       response.write("received image:<br/>");
       response.write("<img src='/show' />");
       response.end();
+   });
 }
 
 function show(response) {
