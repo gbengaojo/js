@@ -18,4 +18,4 @@ var services = angular.module('ExmampleApp.services', [])
             return firstUsernameDeferred.promise;
          }
       };
-   }]
+   }]);
