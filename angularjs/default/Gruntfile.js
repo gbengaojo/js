@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
 
    grunt.loadNpmTasks('grunt-karma');
+   grunt.loadNpmTasks('grunt-contrib-jshint');
 
    grunt.initConfig({
       'meta': {
@@ -26,7 +27,12 @@ module.exports = function (grunt) {
                ],
             }
          }
+      },
+
+      'jshint': {
+         'beforeconcat': ['source/**/*.js'],
       }
+
    });
 
    grunt.registerTask('test', ['karma:development']);
