@@ -2,7 +2,7 @@ describe('ExampleController', function() {
    var scope, controller, httpBackend;
 
    // Initialization of the AngularJS application before each test case
-   beforeEach(module('ExampleApp');
+   beforeEach(module('ExampleApp'));
 
    // Injection of dependencies; $http will be mocked with $httpBackend
    beforeEach(inject(function($rootScope, $controller, $httpBackend) {
@@ -13,8 +13,7 @@ describe('ExampleController', function() {
 
    it('should query the webservice', function() {
       // Which HTTP requests do we expect to occur, and how do we respond?
-      httpBackend.expectGET('/users').respond('[{"name": "First User"},
-                                                {"name": "Second User"}]');
+      httpBackend.expectGET('/users').respond('[{"name": "First User"}, {"name": "Second User"}]');
 
       // Starting the controller
       controller('ExampleController', {'$scope': scope});

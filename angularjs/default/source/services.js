@@ -4,7 +4,7 @@
  * @see https://github.com/mgonto/restangular
  */
 
-var services = angular.module('ExmampleApp.services', [])
+var services = angular.module('ExampleApp.services', [])
    .factory('UserdataService', ['Restangular', '$q', function UserdataService(Restangular, $q) {
       return {
          /**
