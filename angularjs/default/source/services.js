@@ -14,6 +14,7 @@ var services = angular.module('ExampleApp.services', [])
          getFirstUsername: function() {
             var firstUsernameDeferred = $q.defer();
             var response = Restangular.one('users').getList().then(function(response) {
+               firstUsernameDeferred.resolve(response[0].name);
             });
             return firstUsernameDeferred.promise;
          }
