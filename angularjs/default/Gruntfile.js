@@ -4,6 +4,7 @@ module.exports = function (grunt) {
    grunt.loadNpmTasks('grunt-contrib-jshint');
    grunt.loadNpmTasks('grunt-contrib-concat');
    grunt.loadNpmTasks('grunt-contrib-uglify');
+   grunt.loadNpmTasks('grunt-jsdoc');
 
    grunt.initConfig({
       'pkg': grunt.file.readJSON('package.json'),
@@ -71,6 +72,13 @@ module.exports = function (grunt) {
                'dist/<%= pkg.namelower %>-<%= pkg.version %>.min.js': ['dist/<%= pkg.namelower %>-<%= pkg.version %>.js']
             }
          }
+      },
+
+      'jsdoc': {
+         'src': ['source/**/*.js'],
+         'options': {
+            'destination': 'doc'
+         }
       }
    });
 
@@ -82,8 +90,8 @@ module.exports = function (grunt) {
          'concat',
          'karma:dist',
          'uglify',
-         'karma:minified'
-         '
+         'karma:minified',
+         'jsdoc'
       ]);
 
 };
