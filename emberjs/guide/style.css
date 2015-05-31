@@ -338,6 +338,7 @@ label[for='toggle-all'] {
 	position: absolute;
 	right: 0;
 	left: 0;
+   margin-left: 90px;
 }
 
 #filters li {
