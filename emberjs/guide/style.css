@@ -337,7 +337,8 @@ label[for='toggle-all'] {
 	list-style: none;
 	position: absolute;
 	right: 0;
-	left: 100;
+	left: 0;
+   margin-left: 90px;
 }
 
 #filters li {
