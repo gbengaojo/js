@@ -1,5 +1,5 @@
 Todos.Router.map(function() {
-   this.resource('todos', { path: '/' });
+   this.resource('todo', { path: '/' });
 });
 
 Todos.TodosRoute = Ember.Route.extend({
