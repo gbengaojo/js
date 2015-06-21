@@ -12,7 +12,7 @@ Todos.TodosCompletedRoute = Ember.Route.extend({
          return todo.get('isCompleted');
       });
    },
-   renderTemplage: function(controller) {
+   renderTemplate: function(controller) {
       this.render('todos/index', {controller: controller});
    }
 });
