@@ -1,3 +1,4 @@
+// Testing controller
 describe('ExampleController', function() {
    var scope, controller, httpBackend;
 
