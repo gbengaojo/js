@@ -1,0 +1,8 @@
+{
+  "app": "proxy",
+  "version": "0.1.0",
+  "main": "main.js",
+  "dependencies": {
+    "http-proxy": "^1.16.2"
+  }
+}
