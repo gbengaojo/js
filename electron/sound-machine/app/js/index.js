@@ -20,6 +20,7 @@ function prepareButton(buttonEl, soundName) {
    });
 }
 
+// close button DOM element
 var closeEl = document.querySelector('.close');
 closeEl.addEventListener('click', function () {
    ipc.send('close-main-window');
@@ -28,4 +29,10 @@ closeEl.addEventListener('click', function () {
 ipc.on('global-shortcut', function (arg) {
    var event = new MouseEvent('click');
    soundButtons[arg].dispatchEvent(event);
+});
+
+// settings button DOM element
+var settingsEl = document.querySelector('.settings');
+settingsEl.addEventListener('click', function () {
+   ipc.send('open-settings-window');
 });
