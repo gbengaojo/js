@@ -4,6 +4,7 @@ var app = require('app');
 var BrowserWindow = require('browser-window');
 var ipc = require('ipc');
 var globalShortcut = require('global-shortcut');
+var configuration = require('./configuration');
 
 var mainWindow = null
 var settingsWindow = null;
@@ -12,6 +13,10 @@ var settingsWindow = null;
  * on ready function
  */
 app.on('ready', function() {
+   if (!configuration.readSettings('shortcutKeys')) {
+      configuration.saveSettings('shortcutKeys', ['ctrl', 'shift']);
+   }
+
    mainWindow = new BrowserWindow({
       frame: false,
       height: 700,
@@ -21,13 +26,26 @@ app.on('ready', function() {
 
    mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
 
-   globalShortcut.register('ctrl+shift+1', function () {
+   setGlobalShortcuts();
+});
+
+/**
+ * function setGlobalShortcuts
+ */
+function setGlobalShortcuts() {
+   globalShortcut.unregisterAll();
+
+   var shortcutKeysSetting = configuration.readSettings('shortcutKeys');
+   var shortcutPrefix = shortcutKeysSetting.length === 0 ? '' : shortcutKeysSetting.join('+') + '+';
+
+   globalShortcut.register(shortcutPrefix + '1', function () {
       mainWindow.webContents.send('global-shortcut', 0);
    });
-   globalShortcut.register('ctrl+shift+2', function () {
+
+   globalShortcut.register(shortcutPrefix + '2', function () {
       mainWindow.webContents.send('global-shortcut', 1);
-   }); 
-});
+   });
+}
 
 /**
  * on close function
@@ -65,4 +83,11 @@ ipc.on('close-settings-window', function () {
    if (settingsWindow) {
       settingsWindow.close();
    }
+});
+
+/**
+ * subscribe the ipc channel 'set-global-shortcuts' and update
+ */
+ipc.on('set-global-shortcuts', function () {
+   setGlobalShortcuts();
 });
